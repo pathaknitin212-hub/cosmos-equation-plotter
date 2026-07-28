@@ -109,6 +109,117 @@ def plot_implicit(expr_str, x_min, x_max, y_min, y_max, resolution):
     return fig
 
 
+# import streamlit as st
+# import numpy as np
+# import sympy as sp
+# import plotly.graph_objects as go
+
+# def safe_sympify(expr_str, locals_dict=None):
+#     try:
+#         return sp.sympify(expr_str, locals=locals_dict)
+#     except Exception as exc:
+#         raise ValueError(f"Unable to parse expression: {exc}") from exc
+
+
+# def plot_polar(expr_str, theta_start, theta_end, resolution):
+#     theta = sp.symbols("theta")
+#     expr = safe_sympify(expr_str, locals_dict={"theta": theta, "pi": sp.pi})
+#     r_func = sp.lambdify(theta, expr, "numpy")
+#     theta_vals = np.linspace(theta_start, theta_end, resolution)
+#     r_vals = r_func(theta_vals)
+
+#     if np.iscomplexobj(r_vals):
+#         if np.max(np.abs(np.imag(r_vals))) > 1e-8:
+#             raise ValueError("The polar expression produced complex values.")
+#         r_vals = np.real(r_vals)
+
+#     x = r_vals * np.cos(theta_vals)
+#     y = r_vals * np.sin(theta_vals)
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Scatter(x=x, y=y, mode="lines", line=dict(color="#6a1b9a")))
+#     fig.update_layout(
+#         title=f"Polar curve: r(θ) = {expr_str}",
+#         xaxis_title="x",
+#         yaxis_title="y",
+#         width=600,
+#         height=600,
+#         paper_bgcolor='rgba(0,0,0,0)',
+#         plot_bgcolor='rgba(0,0,0,0)',
+#         font=dict(color="white"),
+#         xaxis=dict(showgrid=True, gridcolor="gray", zerolinecolor="white"),
+#         yaxis=dict(showgrid=True, gridcolor="gray", zerolinecolor="white")
+#     )
+#     return fig
+
+
+# def plot_cartesian(expr_str, x_min, x_max, resolution):
+#     x = sp.symbols("x")
+#     expr = safe_sympify(expr_str, locals_dict={"x": x, "pi": sp.pi})
+#     f = sp.lambdify(x, expr, "numpy")
+#     x_vals = np.linspace(x_min, x_max, resolution)
+#     y_vals = f(x_vals)
+
+#     if np.iscomplexobj(y_vals):
+#         if np.max(np.abs(np.imag(y_vals))) > 1e-8:
+#             raise ValueError("The Cartesian expression produced complex values.")
+#         y_vals = np.real(y_vals)
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Scatter(x=x_vals, y=y_vals, mode="lines", line=dict(color="#1e88e5")))
+#     fig.update_layout(
+#         title=f"Cartesian plot: y = {expr_str}",
+#         xaxis_title="x",
+#         yaxis_title="y",
+#         width=800,
+#         height=450,
+#         paper_bgcolor='rgba(0,0,0,0)',
+#         plot_bgcolor='rgba(0,0,0,0)',
+#         font=dict(color="white"),
+#         xaxis=dict(showgrid=True, gridcolor="gray", zerolinecolor="white"),
+#         yaxis=dict(showgrid=True, gridcolor="gray", zerolinecolor="white")
+#     )
+#     return fig
+
+
+# def plot_implicit(expr_str, x_min, x_max, y_min, y_max, resolution):
+#     x, y = sp.symbols("x y")
+#     expr = safe_sympify(expr_str, locals_dict={"x": x, "y": y, "pi": sp.pi})
+#     f = sp.lambdify((x, y), expr, "numpy")
+#     x_vals = np.linspace(x_min, x_max, resolution)
+#     y_vals = np.linspace(y_min, y_max, resolution)
+#     X, Y = np.meshgrid(x_vals, y_vals)
+#     Z = f(X, Y)
+
+#     if np.iscomplexobj(Z):
+#         if np.max(np.abs(np.imag(Z))) > 1e-8:
+#             raise ValueError("The implicit expression produced complex values.")
+#         Z = np.real(Z)
+
+#     fig = go.Figure(
+#         data=go.Contour(
+#             x=x_vals,
+#             y=y_vals,
+#             z=Z,
+#             contours=dict(start=0, end=0, size=1, coloring="lines"),
+#             line=dict(color="#d81b60")
+#         )
+#     )
+#     fig.update_layout(
+#         title=f"Implicit curve: {expr_str} = 0",
+#         xaxis_title="x",
+#         yaxis_title="y",
+#         width=600,
+#         height=600,
+#         paper_bgcolor='rgba(0,0,0,0)',
+#         plot_bgcolor='rgba(0,0,0,0)',
+#         font=dict(color="white"),
+#         xaxis=dict(showgrid=True, gridcolor="gray", zerolinecolor="white"),
+#         yaxis=dict(showgrid=True, gridcolor="gray", zerolinecolor="white")
+#     )
+#     return fig
+
+
 
 # import streamlit as st
 # import numpy as np
