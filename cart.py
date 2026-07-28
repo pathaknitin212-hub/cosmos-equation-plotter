@@ -22,8 +22,8 @@ def plot_polar(expr_str, theta_start, theta_end, resolution):
             raise ValueError("The polar expression produced complex values.")
         r_vals = np.real(r_vals)
 
-    x = r_vals * np.cos(theta_vals)
-    y = r_vals * np.sin(theta_vals)
+    y = r_vals * np.cos(theta_vals)
+    x = r_vals * np.sin(theta_vals)
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=x, y=y, mode="lines", line=dict(color="#6a1b9a")))
